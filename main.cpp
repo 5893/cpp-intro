@@ -1,10 +1,9 @@
 #include "all.h"
 
 int main() {
-    std::cout << "Hello, World!\n"
-              << "改行可能\n"
-                 // operator << しなくても出力的には連結される
-                 "\\を使う場合は更に" + "エスケープが必要"s // operator + で連結も可能
-              << std::endl;
+    std::cout
+        << "Integer: "s << 42 << "\n"s
+        << "Floating Point: "s << 3.14
+        << std::endl;
     return 0;
 }
