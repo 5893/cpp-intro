@@ -1,7 +1,16 @@
 #include "all.h"
 
 int main() {
-    // std::cout << 1 + "234"s << std::endl;   // error: invalid operands to binary expression ('int' and 'basic_string<char>')
-    std::cout << 1 + "234" << std::endl;    // 34 が出力される
+    // 整数の変数
+    auto answer = 42;
+    std::cout << answer << "\n"s;
+    // 浮動小数点の変数
+    auto pi = 3.14;
+    std::cout << pi << "\n"s;
+
+    // 文字列の変数
+    auto question = "Lif, The Universe, and Everything."s;
+    std::cout << question;
+
     return 0;
 }
