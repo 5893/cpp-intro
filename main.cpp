@@ -1,4 +1,4 @@
-#include <iostream>
+#include "all.h"
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
