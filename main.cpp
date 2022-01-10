@@ -23,14 +23,25 @@ struct fractional
     }
 };
 
-int main() {
-    fractional x { 1, 2 };
-    std::cout << x.value() << "\n"s;
-
+fractional operator + ( fractional &l, fractional &r )
+{
+    // 分母が同じなら
+    if (l.denom == r.denom)
     {
-        // コンストラクタで初期化
-        auto a = fractional(5, 5);
-    }   // スコープを抜けて破棄される→デストラクタ発火
+        // 単に分子を足す
+        return fractional { l.num + r.num, l.denom };
+    }
+    else
+    {
+        // 分母をあわせて分子を足す
+        return fractional { l.num * r.denom + r.num * l.denom, l.denom * r.denom };
+    }
+}
 
+int main() {
+    fractional a {1,2};
+    fractional b {1,3};
+    auto c = a + b;
+    std::cout << c.value() << "\n"s;
     return 0;
 }
