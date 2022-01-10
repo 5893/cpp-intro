@@ -16,6 +16,15 @@ struct array
     }
 };
 
+template < typename Array>
+void print( Array & c )
+{
+    for ( std::size_t i = 0; i != c.size(); ++i )
+    {
+        std::cout << c[i] << "\n"s;
+    }
+}
+
 int main() {
     using array = std::array<int, 5>;
     array a = {1,2,3,4,5};
@@ -23,11 +32,5 @@ int main() {
     array::value_type x = 0;
     array::reference ref = a[0];
 
-    auto print = [](auto first, auto last) {
-        for (auto iter = first; iter != last; ++iter)
-        {
-            std::cout << *iter << "\n"s;
-        }
-    };
-    print( a.begin(), a.end() );
+    print(a);
 }
