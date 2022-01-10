@@ -1,16 +1,19 @@
 #include "all.h"
 
+struct fractional
+{
+    int num;
+    int denom;
+
+    double value()
+    {
+        return static_cast<double>(num) / static_cast<double>(denom);
+    }
+};
+
 int main() {
-    int value = 123;
-
-    // [=] で関数の外側の値をコピーして使うことが可能
-    auto f = [=]{ return value; };
-    std::cout << f() << "\n"s;    // 123
-
-    // [&] で関数の外側の値をリファレンスで使うことが可能
-    auto g = [&] { ++value; };
-    g();
-    std::cout << value << "\n"s; // 124
+    fractional x { 1, 2 };
+    std::cout << x.value() << "\n"s;
 
     return 0;
 }
