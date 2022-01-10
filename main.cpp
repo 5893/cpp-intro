@@ -8,6 +8,10 @@ namespace A::B::C {
     int f() { return 0; }
 }
 
+inline namespace Inline {
+    int a { };
+}
+
 using namespace std;
 
 int main() {
@@ -20,6 +24,10 @@ int main() {
     D::f();
 
     cout << "usingすると、namespace::部分を省略できる\n"s;
+
+    // inline namespaceは名前空間を指定しないで使うことができる
+    a = 0;
+    Inline::a = 0;
 
     return 0;
 }
