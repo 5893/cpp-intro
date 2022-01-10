@@ -1,11 +1,9 @@
 #include "all.h"
 
 int main() {
-    auto print = [](auto s){ std::cout << s << "\n"s ; } ;
-    std::array<int, 5> a{};
+    int a[5] = { 1,2,3,4,5 };
+//    int b[5] = a;   // エラー: コピーできない
 
-    // aのバイト数
-    print( sizeof(a) );
-    // 要素数: 5
-    print( a.size() );
+    std::array<int, 5> c = {1,2,3,4,5};
+    std::array<int, 5> d = c;   // コピーできる
 }
