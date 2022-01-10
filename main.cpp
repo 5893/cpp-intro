@@ -1,33 +1,18 @@
 #include "all.h"
 
-namespace very_long_name {
-    int f() { return 0; }
-}
-
-namespace A::B::C {
-    int f() { return 0; }
-}
-
-inline namespace Inline {
-    int a { };
-}
-
-using namespace std;
-
 int main() {
-    // 名前空間エイリアス
-    namespace vln = very_long_name;
-    vln::f();
+    // エイリアス宣言
+    using Number = int;
 
-    // 入れ子に対しても使える
-    namespace D = A::B::C;
-    D::f();
+    // Numberはintの別名
+    Number x = 0;
 
-    cout << "usingすると、namespace::部分を省略できる\n"s;
+    // 昔はこういう型宣言の書き方を使っている。
+    // ライブラリを読むときには頻出なので覚えておくこと
+    typedef int Number;
 
-    // inline namespaceは名前空間を指定しないで使うことができる
-    a = 0;
-    Inline::a = 0;
+    // この書き方はコンパイル通ってしまうが、型によっては通らないものがあるらしい
+    int typedef Number;
 
     return 0;
 }
