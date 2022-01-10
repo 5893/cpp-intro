@@ -1,47 +1,14 @@
 #include "all.h"
 
-struct fractional
-{
-    int num;
-    int denom;
-
-    double value()
-    {
-        return static_cast<double>(num) / static_cast<double>(denom);
-    }
-
-    fractional(int num, int denom)
-    {
-        // コンストラクタ処理
-        fractional::num = num;
-        fractional::denom = denom;
-    }
-
-    ~fractional()
-    {
-        // デストラクタ処理
-    }
-};
-
-fractional operator + ( fractional &l, fractional &r )
-{
-    // 分母が同じなら
-    if (l.denom == r.denom)
-    {
-        // 単に分子を足す
-        return fractional { l.num + r.num, l.denom };
-    }
-    else
-    {
-        // 分母をあわせて分子を足す
-        return fractional { l.num * r.denom + r.num * l.denom, l.denom * r.denom };
-    }
-}
-
 int main() {
-    fractional a {1,2};
-    fractional b {1,3};
-    auto c = a + b;
-    std::cout << c.value() << "\n"s;
-    return 0;
+    auto print = [](auto s){ std::cout << s << "\n"s ; } ;
+    int a[5] ;
+    print( sizeof(a) ) ;        // 20: 要素型 * 要素数になる為、 5 * 4 = 20 となる
+    print( sizeof(int) );       // 4
+    print( sizeof(a) / sizeof(int) );   // こうやって要素数を出力すると良い
+
+    double b [5] ;
+    print( sizeof(b) ) ;            // 40: 要素型 * 要素数になる為、 5 * 8 = 40 となる
+    print( sizeof(double) ) ;       // 8
+    print( sizeof(b) / sizeof(double) );   // こうやって要素数を出力すると良い
 }
