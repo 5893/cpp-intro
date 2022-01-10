@@ -1,32 +1,17 @@
 #include "all.h"
 
 int main() {
-    // 整数型intの値を保持するvector
-    std::vector<int> vi;
-
-    // 浮動小数点型doubleの値を保持するvector
-    std::vector<double> vd;
-
-    // 文字列型std::stringの値を保持するvector
-    std::vector<std::string> vs;
-
     std::vector<int> v;
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(3);
 
-    for (int i = 4; i <= 1000; i++)
-    {
-        v.push_back(i);
-    }
+    // std::size_t型
+    // 負の値が使えない整数型
+    std::size_t size = v.size();
 
-    std::cout << "v's length: "s << v.size() << "\n"s;
+    v.push_back(0);
 
-    // vの中身全部出力する
-    for (int i : v)
-    {
-        std::cout << i << "\n"s;
-    }
+    // std::size_t型
+    std::size_t index = 0;
+    auto _val_0 = v.at( index );
 
     return 0;
 }
