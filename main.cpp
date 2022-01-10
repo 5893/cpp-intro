@@ -1,36 +1,46 @@
 #include "all.h"
 
-//auto output_all = []( auto first, auto last )
-//{
-//    for (auto iter = first; iter != last; ++iter)
-//    {
-//        std::cout << *iter << "\n"s;
-//    }
-//};
-
-auto output_all = [](auto first, auto last, auto output_iter)
+void assign_3( int x )
 {
-    for (auto iter = first; iter != last; ++iter, ++output_iter)
-    {
-        *output_iter = *iter;
-    }
-};
+    x = 3;  // コピーされた x は 元の a とは違うアドレスを指しているので、代入しても a には反映されない
+}
+
+void assign_3_ref (int & x )
+{
+    x = 3;
+}
 
 int main() {
-    // 通常
-//    std::vector<int> v = {1,2,3,4,5};
-    // 標準入力から受け取るイテレータ
-    // 受け取った瞬間 output_all で出力される
-//    std::istream_iterator<int> first( std::cin ), last;
-    // カレントディレクトリファイル一覧を取得するイテレータ
-//    std::filesystem::directory_iterator first("./"), last;    // 何故か動かない……
-    // コピーさせることもできる
-    std::vector<int> source = {1,2,3,4,5};
-    std::vector<int> destination(5);
+    {
+        int a = 1;
+        int b = 2;
 
-//    output_all(first, last);
-//    output_all(first, last, std::ostream_iterator<int>(std::cout));
-    output_all( std::begin(source), std::end(source), std::begin(destination) );
+        b = a;
+        // b == 1 aの値がコピーされて代入されている
+
+        b = 3;
+        // a == 1
+        // b == 3
+
+        assign_3( a );  // 値はコピーされて渡されている
+
+        // a == 1
+    }
+
+    {
+        int a = 1;
+        int & ref = a;  // 参照 ref は a を参照する
+
+        ref = 3;
+
+        // a == 3
+        // ref は a なので同じく 3
+
+        ref = 1;    // 一旦戻して
+        assign_3_ref(a);  // 関数は参照として受け取っているので、関数側でaへアクセス可能
+
+        // a == 3
+    }
 
     return 0;
 }
