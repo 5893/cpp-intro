@@ -1,21 +1,21 @@
 #include "all.h"
 
+namespace very_long_name {
+    int f() { return 0; }
+}
+
+namespace A::B::C {
+    int f() { return 0; }
+}
+
 int main() {
-    // 使ってはならない
+    // 名前空間エイリアス
+    namespace vln = very_long_name;
+    vln::f();
 
-    // ダブルアンダースコアを含む名前
-    // C++コンパイラがその名前をC++実装の為に予約されている
-    int __ = 0;
-    int a__ = 0;
-    int __a = 0;
-
-    // アンダースコアに大文字から始まる
-    // C++コンパイラがその名前をC++実装の為に予約されている
-    int _A = 0;
-
-    // アンダースコアに小文字から始まる
-    // グローバル名前空間で予約されている
-    int _a = 0;
+    // 入れ子に対しても使える
+    namespace D = A::B::C;
+    D::f();
 
     return 0;
 }
