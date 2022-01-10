@@ -1,17 +1,10 @@
 #include "all.h"
 
 int main() {
-    std::vector<int> v;
-
-    // std::size_t型
-    // 負の値が使えない整数型
-    std::size_t size = v.size();
-
-    v.push_back(0);
-
-    // std::size_t型
-    std::size_t index = 0;
-    auto _val_0 = v.at( index );
+    // 標準出力
+    std::cout << "standard output\n"s;
+    // 標準エラー出力
+    std::cerr << "standard error output\n"s;
 
     return 0;
 }
