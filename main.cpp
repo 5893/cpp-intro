@@ -1,10 +1,10 @@
 #include "all.h"
 
 int main() {
-    // 標準出力
-    std::cout << "standard output\n"s;
-    // 標準エラー出力
-    std::cerr << "standard error output\n"s;
+    // 長い数値は'で区切って描くことができる。
+    // 区切り幅は何文字でも良い。
+    int a = 100'000'000'000;
+    int b = 1'22'333'4444'55555'666666'7777777'88888888'9999999999;
 
     return 0;
 }
