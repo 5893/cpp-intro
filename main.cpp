@@ -1,11 +1,16 @@
 #include "all.h"
 
 int main() {
-    int x = 0;
-    x = 1;
+    int value = 123;
 
-//    const int y = 0;
-//    y = 0;  // エラー、constは変更できない
+    // [=] で関数の外側の値をコピーして使うことが可能
+    auto f = [=]{ return value; };
+    std::cout << f() << "\n"s;    // 123
+
+    // [&] で関数の外側の値をリファレンスで使うことが可能
+    auto g = [&] { ++value; };
+    g();
+    std::cout << value << "\n"s; // 124
 
     return 0;
 }
